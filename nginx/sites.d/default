@@ -1,0 +1,8 @@
+server {
+	listen 80 default_server;
+	index index.html index.php;
+
+	location / {
+		root /var/www;
+	}
+}
