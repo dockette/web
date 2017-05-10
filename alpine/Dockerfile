@@ -66,4 +66,4 @@ WORKDIR /srv
 
 EXPOSE 80 443 9001
 
-ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
