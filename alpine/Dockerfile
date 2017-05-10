@@ -61,7 +61,6 @@ ADD ./supervisor/supervisord.conf /etc/
 ADD ./supervisor/services /etc/supervisord.d/
 
 # APPLICATION
-VOLUME /srv
 WORKDIR /srv
 
 EXPOSE 80 443 9001
