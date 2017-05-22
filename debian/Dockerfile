@@ -1,4 +1,4 @@
-FROM dockette/sid
+FROM dockette/jessie
 
 MAINTAINER Milan Sulc <sulcmil@gmail.com>
 
