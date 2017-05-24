@@ -20,6 +20,9 @@ RUN apt update && apt dist-upgrade -y && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ jessie main" > /etc/apt/sources.list.d/php.list && \
+    wget -O- http://nginx.org/keys/nginx_signing.key | apt-key add - && \
+    echo "deb http://nginx.org/packages/debian/ jessie nginx" > /etc/apt/sources.list.d/nginx.list && \
+    echo "deb-src http://nginx.org/packages/debian/ jessie nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt update && \
     apt install -y --no-install-recommends \
         nginx \
