@@ -66,6 +66,7 @@ RUN apt update && apt dist-upgrade -y && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
     # CLEAN UP #################################################################
+    rm /etc/nginx/conf.d/default.conf && \
     apt-get clean -y && \
     apt-get autoclean -y && \
     apt-get remove -y wget curl && \
