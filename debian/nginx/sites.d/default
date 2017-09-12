@@ -9,7 +9,7 @@ server {
   listen 80;
 
   index index.html index.php;
-  root /var/www/;
+  root /srv/www/;
 
   location / {
     try_files $uri $uri/ /index.php$is_args$args;

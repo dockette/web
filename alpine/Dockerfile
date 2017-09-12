@@ -55,7 +55,7 @@ ADD ./nginx/mime.types /etc/nginx/
 ADD ./nginx/sites.d /etc/nginx/sites.d
 
 # WWW
-ADD ./www /var/www/
+ADD ./www /srv/www/
 
 # SUPERVISOR
 ADD ./supervisor/supervisord.conf /etc/
