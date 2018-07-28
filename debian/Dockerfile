@@ -37,7 +37,6 @@ RUN apt update && apt dist-upgrade -y && \
         php7.1-ctype \
         php7.1-curl \
         php7.1-fpm \
-        php7.1-geoip \
         php7.1-gettext \
         php7.1-gd \
         php7.1-intl \
