@@ -53,6 +53,7 @@ RUN apt update && apt dist-upgrade -y && \
         php7.2-soap \
         php7.2-sqlite3 \
         php7.2-ssh2 \
+        php7.2-tidy \
         php7.2-zip \
         php7.2-xmlrpc \
         php7.2-xsl && \
