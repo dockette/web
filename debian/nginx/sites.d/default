@@ -2,7 +2,7 @@
 # Virtual Host Configs
 ##
 upstream app {
-    server unix:/var/run/php71-fpm.sock;
+    server unix:/var/run/php-fpm.sock;
 }
 
 server {
