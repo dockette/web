@@ -1,6 +1,6 @@
 # Web
 
-Ready-to-use image with Nginx + PHP 7.2 + FPM + Supervisor.
+Ready-to-use docker images for websites (nginx, PHP 7.2/7.3/7.4 + FPM, supervisor).
 
 -----
 
@@ -13,10 +13,11 @@ Ready-to-use image with Nginx + PHP 7.2 + FPM + Supervisor.
 
 ## Images
 
-There are main 2 images.
-
-- `dockette/web` - based on Alpine Linux 3.8
-- `dockette/web:debian` - based on Debian Stretch
+| Image                 | Distro | PHP |
+|-----------------------|--------|-----|
+| `dockette/web:php-74` | Buster | 7.4 |
+| `dockette/web:php-73` | Buster | 7.3 |
+| `dockette/web:php-72` | Buster | 7.2 |
 
 ## Usage
 
@@ -28,8 +29,5 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	-p 9001:9001 \
-	dockette/web
+	dockette/web:php74
 ```
-
-Port 80 is for webserver and 9001 is for supervisor web interface.

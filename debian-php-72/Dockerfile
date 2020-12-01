@@ -1,6 +1,4 @@
-FROM dockette/stretch
-
-MAINTAINER Milan Sulc <sulcmil@gmail.com>
+FROM dockette/debian:buster
 
 # PHP
 ENV PHP_MODS_DIR=/etc/php/7.2/mods-available
@@ -19,10 +17,10 @@ RUN apt update && apt dist-upgrade -y && \
     apt install -y wget curl apt-transport-https ca-certificates gnupg2 && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list && \
+    echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list && \
     wget -O- http://nginx.org/keys/nginx_signing.key | apt-key add - && \
-    echo "deb http://nginx.org/packages/debian/ stretch nginx" > /etc/apt/sources.list.d/nginx.list && \
-    echo "deb-src http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list.d/nginx.list && \
+    echo "deb http://nginx.org/packages/debian/ buster nginx" > /etc/apt/sources.list.d/nginx.list && \
+    echo "deb-src http://nginx.org/packages/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt update && \
     apt install -y --no-install-recommends \
         nginx \
@@ -58,8 +56,7 @@ RUN apt update && apt dist-upgrade -y && \
         php7.2-xmlrpc \
         php7.2-xsl && \
     # COMPOSER #################################################################
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-    composer global require "hirak/prestissimo:^0.3" && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2 && \
     # PHP MOD(s) ###############################################################
     rm ${PHP_FPM_POOL_DIR}/www.conf && \
     # NGINX ####################################################################
@@ -85,12 +82,12 @@ ADD ./nginx/sites.d /etc/nginx/sites.d
 ADD ./www /srv/www/
 
 # SUPERVISOR
-ADD ./supervisor/supervisord.conf /etc/
-ADD ./supervisor/services /etc/supervisord.d/
+ADD ./supervisor/supervisord.conf /etc/supervisor/
+ADD ./supervisor/services /etc/supervisor/conf.d/
 
 # APPLICATION
 WORKDIR /srv
 
-EXPOSE 80 443 9001
+EXPOSE 80
 
-CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
