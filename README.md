@@ -19,6 +19,7 @@
 
 | Image                 | Distro | PHP |
 |-----------------------|--------|-----|
+| `dockette/web:php-80` | Buster | 8.0 |
 | `dockette/web:php-74` | Buster | 7.4 |
 | `dockette/web:php-73` | Buster | 7.3 |
 | `dockette/web:php-72` | Buster | 7.2 |
@@ -31,7 +32,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php74
+	dockette/web:php80
 ```
 
 ## Development
