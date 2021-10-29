@@ -34,6 +34,7 @@ RUN apt update && apt dist-upgrade -y && \
         php8.0-cli \
         php8.0-ctype \
         php8.0-curl \
+        php8.0-fpm \
         php8.0-gettext \
         php8.0-gd \
         php8.0-intl \
