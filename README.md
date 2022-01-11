@@ -9,8 +9,9 @@
 </p>
 
 <p align=center>
-	<a href="https://hub.docker.com/r/dockette/web/"><img src="https://img.shields.io/docker/stars/dockette/web.svg?style=flat"></a>
-	<a href="https://hub.docker.com/r/dockette/web/"><img src="https://img.shields.io/docker/pulls/dockette/web.svg?style=flat"></a>
+  <a href="https://hub.docker.com/r/dockette/web/"><img src="https://badgen.net/docker/pulls/dockette/web"></a>
+  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
+  <a href="https://github.com/sponsors/f3l1x"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
 </p>
 
 ![](https://github.com/dockette/web/blob/master/screenshot.png "It works")
