@@ -20,6 +20,7 @@
 
 | Image                 | Distro | PHP |
 |-----------------------|--------|-----|
+| `dockette/web:php-81` | Buster | 8.1 |
 | `dockette/web:php-80` | Buster | 8.0 |
 | `dockette/web:php-74` | Buster | 7.4 |
 | `dockette/web:php-73` | Buster | 7.3 |
