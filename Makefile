@@ -13,3 +13,6 @@ build-debian-php-74:
 
 build-debian-php-80:
 	docker build -t ${DOCKER_IMAGE}:php-80 ./debian-php-80
+
+build-debian-php-81:
+	docker build -t ${DOCKER_IMAGE}:php-80 ./debian-php-81
