@@ -21,6 +21,9 @@ jobs:
 
           - context: ./debian-php-80
             tag: php-80
+          
+          - context: ./debian-php-81
+            tag: php-81
 
       fail-fast: false
 
