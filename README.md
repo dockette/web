@@ -34,7 +34,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php80
+	dockette/web:php-81
 ```
 
 ## Development
