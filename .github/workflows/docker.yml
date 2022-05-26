@@ -28,7 +28,7 @@ jobs:
 
       fail-fast: false
 
-    name: Docker (dockette/rendertron:${{ matrix.tag }})
+    name: Docker (dockette/web:${{ matrix.tag }})
 
     steps:
       - name: Checkout
