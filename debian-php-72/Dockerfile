@@ -14,7 +14,7 @@ ENV TZ=Europe/Prague
 # INSTALLATION
 RUN apt update && apt dist-upgrade -y && \
     # DEPENDENCIES #############################################################
-    apt install -y wget curl apt-transport-https ca-certificates gnupg2 && \
+    apt install -y wget curl apt-transport-https ca-certificates gnupg2 cron && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list && \
@@ -69,6 +69,9 @@ RUN apt update && apt dist-upgrade -y && \
     apt-get remove -y wget curl && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
+
+# CRON
+RUN truncate -s 0 /etc/crontab
 
 # PHP
 ADD ./php/php-fpm.conf /etc/php/7.2/
