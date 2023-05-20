@@ -54,7 +54,7 @@ docker run \
 
 ## Run cron tasks
 
-You could also run cron tasks, just simply bind your `crontab` to `/etc/crontab`, for example,
+You could also run cron tasks, just simply bind your `crontab` to `/etc/cron.d/app`, for example,
 in such way:
 
 ```
@@ -62,9 +62,16 @@ docker run \
 	-it \
 	--rm \
 	--name www \
-	-v my-crontab:/etc/crontab \
+	-v my-crontab:/etc/cron.d/app \
 	-p 80:80 \
 	dockette/web:php-81
+```
+
+Please note, this crontab should has a little bit different format.
+There is also username, for example:
+
+```
+57 19 * * *   root    my_command
 ```
 
 ## Development

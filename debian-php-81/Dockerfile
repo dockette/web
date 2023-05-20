@@ -14,7 +14,7 @@ ENV TZ=Europe/Prague
 # INSTALLATION
 RUN apt update && apt dist-upgrade -y && \
     # DEPENDENCIES #############################################################
-    apt install -y wget curl apt-transport-https ca-certificates gnupg2 && \
+    apt install -y wget curl apt-transport-https ca-certificates gnupg2 cron && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list && \
@@ -87,5 +87,6 @@ WORKDIR /srv
 
 # PORTS
 EXPOSE 80
-
-CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
+COPY entrypoint.sh /usr/sbin/entrypoint.sh
+RUN chmod +x /usr/sbin/entrypoint.sh
+CMD ["/usr/sbin/entrypoint.sh"]

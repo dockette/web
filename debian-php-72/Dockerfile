@@ -92,5 +92,6 @@ ADD ./supervisor/services /etc/supervisor/conf.d/
 WORKDIR /srv
 
 EXPOSE 80
-
-CMD ["supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
+COPY entrypoint.sh /usr/sbin/entrypoint.sh
+RUN chmod +x /usr/sbin/entrypoint.sh
+CMD ["/usr/sbin/entrypoint.sh"]
