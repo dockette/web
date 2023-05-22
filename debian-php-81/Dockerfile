@@ -9,6 +9,8 @@ ENV PHP_CGI_CONF_DIR=${PHP_CGI_DIR}/conf.d
 ENV PHP_FPM_DIR=/etc/php/8.1/fpm/
 ENV PHP_FPM_CONF_DIR=${PHP_FPM_DIR}/conf.d
 ENV PHP_FPM_POOL_DIR=${PHP_FPM_DIR}/pool.d
+ENV PHP_FPM_BIN=/usr/sbin/php-fpm8.1
+ENV PHP_FPM_CONF=/etc/php/8.1/php-fpm.conf
 ENV TZ=Europe/Prague
 
 # INSTALLATION
@@ -69,6 +71,7 @@ RUN apt update && apt dist-upgrade -y && \
 
 # PHP
 ADD ./php/php-fpm.conf /etc/php/8.1/
+ADD ./php/php.ini /etc/php/8.1/conf.d/
 
 # NGINX
 ADD ./nginx/nginx.conf /etc/nginx/
