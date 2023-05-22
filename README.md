@@ -37,6 +37,43 @@ docker run \
 	dockette/web:php-81
 ```
 
+## Custom Nginx config
+
+To customize Nginx config just bind new config to the path `/etc/nginx/sites.d/site.conf`, for example,
+in such way:
+
+```
+docker run \
+	-it \
+	--rm \
+	--name www \
+	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
+	-p 80:80 \
+	dockette/web:php-81
+```
+
+## Run cron tasks
+
+You could also run cron tasks, just simply bind your `crontab` to `/etc/cron.d/app`, for example,
+in such way:
+
+```
+docker run \
+	-it \
+	--rm \
+	--name www \
+	-v my-crontab:/etc/cron.d/app \
+	-p 80:80 \
+	dockette/web:php-81
+```
+
+Please note, this crontab should has a little bit different format.
+There is also username, for example:
+
+```
+57 19 * * *   www-data    my_command
+```
+
 ## Development
 
 See [how to contribute](https://contributte.org/contributing.html) to this package.

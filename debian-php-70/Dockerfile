@@ -1,12 +1,12 @@
 FROM dockette/debian:buster
 
 # PHP
-ENV PHP_MODS_DIR=/etc/php/8.1/mods-available
-ENV PHP_CLI_DIR=/etc/php/8.1/cli/
+ENV PHP_MODS_DIR=/etc/php/7.0/mods-available
+ENV PHP_CLI_DIR=/etc/php/7.0/cli/
 ENV PHP_CLI_CONF_DIR=${PHP_CLI_DIR}/conf.d
-ENV PHP_CGI_DIR=/etc/php/8.1/cgi/
+ENV PHP_CGI_DIR=/etc/php/7.0/cgi/
 ENV PHP_CGI_CONF_DIR=${PHP_CGI_DIR}/conf.d
-ENV PHP_FPM_DIR=/etc/php/8.1/fpm/
+ENV PHP_FPM_DIR=/etc/php/7.0/fpm/
 ENV PHP_FPM_CONF_DIR=${PHP_FPM_DIR}/conf.d
 ENV PHP_FPM_POOL_DIR=${PHP_FPM_DIR}/pool.d
 ENV TZ=Europe/Prague
@@ -25,37 +25,40 @@ RUN apt update && apt dist-upgrade -y && \
     apt install -y --no-install-recommends \
         nginx \
         supervisor \
-        php8.1-apc \
-        php8.1-apcu \
-        php8.1-bz2 \
-        php8.1-bcmath \
-        php8.1-calendar \
-        php8.1-cgi \
-        php8.1-cli \
-        php8.1-ctype \
-        php8.1-curl \
-        php8.1-fpm \
-        php8.1-gettext \
-        php8.1-gd \
-        php8.1-intl \
-        php8.1-imap \
-        php8.1-ldap \
-        php8.1-mbstring \
-        php8.1-memcached \
-        php8.1-mongo \
-        php8.1-mysql \
-        php8.1-pdo \
-        php8.1-pgsql \
-        php8.1-redis \
-        php8.1-soap \
-        php8.1-sqlite3 \
-        php8.1-ssh2 \
-        php8.1-tidy \
-        php8.1-zip \
-        php8.1-xmlrpc \
-        php8.1-xsl && \
+        php7.0-apc \
+        php7.0-apcu \
+        php7.0-bz2 \
+        php7.0-bcmath \
+        php7.0-calendar \
+        php7.0-cgi \
+        php7.0-cli \
+        php7.0-ctype \
+        php7.0-curl \
+        php7.0-fpm \
+        php7.0-geoip \
+        php7.0-gettext \
+        php7.0-gd \
+        php7.0-intl \
+        php7.0-imap \
+        php7.0-ldap \
+        php7.0-mbstring \
+        php7.0-memcached \
+        php7.0-mongo \
+        php7.0-mysql \
+        php7.0-pdo \
+        php7.0-pgsql \
+        php7.0-redis \
+        php7.0-soap \
+        php7.0-sqlite3 \
+        php7.0-ssh2 \
+        php7.0-tidy \
+        php7.0-zip \
+        php7.0-xmlrpc \
+        php7.0-xsl && \
     # COMPOSER #################################################################
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2 && \
+    # PHP MOD(s) ###############################################################
+    rm ${PHP_FPM_POOL_DIR}/www.conf && \
     # NGINX ####################################################################
     ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
@@ -68,7 +71,7 @@ RUN apt update && apt dist-upgrade -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
 # PHP
-ADD ./php/php-fpm.conf /etc/php/8.1/
+ADD ./php/php-fpm.conf /etc/php/7.0/
 
 # NGINX
 ADD ./nginx/nginx.conf /etc/nginx/
@@ -85,7 +88,6 @@ ADD ./supervisor/services /etc/supervisor/conf.d/
 # APPLICATION
 WORKDIR /srv
 
-# PORTS
 EXPOSE 80
 COPY entrypoint.sh /usr/sbin/entrypoint.sh
 RUN chmod +x /usr/sbin/entrypoint.sh
