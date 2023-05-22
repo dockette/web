@@ -1,7 +1,7 @@
 <h1 align=center>Dockette / Web</h1>
 
 <p align=center>
-   🐳 Ready-to-use docker images for websites (nginx, PHP 7.2/7.3/7.4 + FPM, supervisor).
+   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2 + FPM, supervisor, cron).
 </p>
 
 <p align=center>
@@ -20,11 +20,14 @@
 
 | Image                 | Distro | PHP |
 |-----------------------|--------|-----|
+| `dockette/web:php-82` | Buster | 8.2 |
 | `dockette/web:php-81` | Buster | 8.1 |
 | `dockette/web:php-80` | Buster | 8.0 |
 | `dockette/web:php-74` | Buster | 7.4 |
 | `dockette/web:php-73` | Buster | 7.3 |
 | `dockette/web:php-72` | Buster | 7.2 |
+| `dockette/web:php-71` | Buster | 7.1 |
+| `dockette/web:php-70` | Buster | 7.0 |
 
 You can easily start your Docker container with following command.
 
@@ -34,7 +37,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php-81
+	dockette/web:php-82
 ```
 
 ## Custom Nginx config
@@ -49,7 +52,7 @@ docker run \
 	--name www \
 	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
 	-p 80:80 \
-	dockette/web:php-81
+	dockette/web:php-82
 ```
 
 ## Run cron tasks
@@ -64,7 +67,7 @@ docker run \
 	--name www \
 	-v my-crontab:/etc/cron.d/app \
 	-p 80:80 \
-	dockette/web:php-81
+	dockette/web:php-82
 ```
 
 Please note, this crontab should has a little bit different format.
