@@ -20,6 +20,7 @@
 
 | Image                 | Distro | PHP |
 |-----------------------|--------|-----|
+| `dockette/web:php-83` | Buster | 8.3 |
 | `dockette/web:php-82` | Buster | 8.2 |
 | `dockette/web:php-81` | Buster | 8.1 |
 | `dockette/web:php-80` | Buster | 8.0 |
@@ -37,7 +38,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php-82
+	dockette/web:php-83
 ```
 
 ## Custom Nginx config
@@ -52,7 +53,7 @@ docker run \
 	--name www \
 	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
 	-p 80:80 \
-	dockette/web:php-82
+	dockette/web:php-83
 ```
 
 ## Run cron tasks
@@ -67,7 +68,7 @@ docker run \
 	--name www \
 	-v my-crontab:/etc/cron.d/app \
 	-p 80:80 \
-	dockette/web:php-82
+	dockette/web:php-83
 ```
 
 Please note, this crontab should has a little bit different format.

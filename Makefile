@@ -25,6 +25,7 @@ docker-build-php-74: _docker-build-php-74
 docker-build-php-80: _docker-build-php-80
 docker-build-php-81: _docker-build-php-81
 docker-build-php-82: _docker-build-php-82
+docker-build-php-83: _docker-build-php-83
 
 docker-build-all:
 	$(MAKE) docker-build-php-70
