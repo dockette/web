@@ -1,7 +1,7 @@
 <h1 align=center>Dockette / Web</h1>
 
 <p align=center>
-   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2 + FPM, supervisor, cron).
+   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2/8.3 + FPM, supervisor, cron).
 </p>
 
 <p align=center>
