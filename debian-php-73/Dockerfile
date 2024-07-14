@@ -1,4 +1,4 @@
-FROM dockette/debian:buster
+FROM dockette/debian:bookworm
 
 # PHP
 ENV PHP_MODS_DIR=/etc/php/7.3/mods-available
@@ -19,15 +19,14 @@ RUN apt update && apt dist-upgrade -y && \
     apt install -y wget curl apt-transport-https ca-certificates gnupg2 cron && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    echo "deb https://packages.sury.org/php/ buster main" > /etc/apt/sources.list.d/php.list && \
+    echo "deb https://packages.sury.org/php/ bookworm main" > /etc/apt/sources.list.d/php.list && \
     wget -O- http://nginx.org/keys/nginx_signing.key | apt-key add - && \
-    echo "deb http://nginx.org/packages/debian/ buster nginx" > /etc/apt/sources.list.d/nginx.list && \
-    echo "deb-src http://nginx.org/packages/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list && \
+    echo "deb http://nginx.org/packages/debian/ bookworm nginx" > /etc/apt/sources.list.d/nginx.list && \
+    echo "deb-src http://nginx.org/packages/debian/ bookworm nginx" >> /etc/apt/sources.list.d/nginx.list && \
     apt update && \
     apt install -y --no-install-recommends \
         nginx \
         supervisor \
-        php7.3-apc \
         php7.3-apcu \
         php7.3-bz2 \
         php7.3-bcmath \
@@ -45,7 +44,7 @@ RUN apt update && apt dist-upgrade -y && \
         php7.3-ldap \
         php7.3-mbstring \
         php7.3-memcached \
-        php7.3-mongo \
+#        php7.3-mongo \
         php7.3-mysql \
         php7.3-pdo \
         php7.3-pgsql \
@@ -66,10 +65,10 @@ RUN apt update && apt dist-upgrade -y && \
     ln -sf /dev/stderr /var/log/nginx/error.log && \
     # CLEAN UP #################################################################
     rm /etc/nginx/conf.d/default.conf && \
-    apt-get clean -y && \
-    apt-get autoclean -y && \
-    apt-get remove -y wget && \
-    apt-get autoremove -y && \
+    apt clean -y && \
+    apt autoclean -y && \
+    apt remove -y wget && \
+    apt autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
 # CRON

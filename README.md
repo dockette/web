@@ -18,17 +18,17 @@
 
 ## Usage
 
-| Image                 | Distro | PHP |
-|-----------------------|--------|-----|
-| `dockette/web:php-83` | Buster | 8.3 |
-| `dockette/web:php-82` | Buster | 8.2 |
-| `dockette/web:php-81` | Buster | 8.1 |
-| `dockette/web:php-80` | Buster | 8.0 |
-| `dockette/web:php-74` | Buster | 7.4 |
-| `dockette/web:php-73` | Buster | 7.3 |
-| `dockette/web:php-72` | Buster | 7.2 |
-| `dockette/web:php-71` | Buster | 7.1 |
-| `dockette/web:php-70` | Buster | 7.0 |
+| Image                 | Distro   | PHP |
+|-----------------------|----------|-----|
+| `dockette/web:php-83` | Bookworm | 8.3 |
+| `dockette/web:php-82` | Bookworm | 8.2 |
+| `dockette/web:php-81` | Bookworm | 8.1 |
+| `dockette/web:php-80` | Bookworm | 8.0 |
+| `dockette/web:php-74` | Bookworm | 7.4 |
+| `dockette/web:php-73` | Bookworm | 7.3 |
+| `dockette/web:php-72` | Bookworm | 7.2 |
+| `dockette/web:php-71` | Bookworm | 7.1 |
+| `dockette/web:php-70` | Bookworm | 7.0 |
 
 You can easily start your Docker container with following command.
 
