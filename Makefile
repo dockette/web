@@ -36,6 +36,7 @@ docker-build-all:
 	$(MAKE) docker-build-php-80
 	$(MAKE) docker-build-php-81
 	$(MAKE) docker-build-php-82
+	$(MAKE) docker-build-php-83
 
 
 docker-test-all:
@@ -47,6 +48,7 @@ docker-test-all:
 	$(MAKE) _docker-test-php-80
 	$(MAKE) _docker-test-php-81
 	$(MAKE) _docker-test-php-82
+	$(MAKE) _docker-test-php-83
 
 _docker-test-%: VERSION=$*
 _docker-test-%:
