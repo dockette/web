@@ -1,7 +1,7 @@
 <h1 align=center>Dockette / Web</h1>
 
 <p align=center>
-   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2/8.3 + FPM, supervisor, cron).
+   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2/8.3/8.4 + FPM, supervisor, cron).
 </p>
 
 <p align=center>
@@ -20,6 +20,7 @@
 
 | Image                 | Distro   | PHP |
 |-----------------------|----------|-----|
+| `dockette/web:php-84` | Bookworm | 8.4 |
 | `dockette/web:php-83` | Bookworm | 8.3 |
 | `dockette/web:php-82` | Bookworm | 8.2 |
 | `dockette/web:php-81` | Bookworm | 8.1 |
@@ -38,7 +39,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php-83
+	dockette/web:php-84
 ```
 
 ## Custom Nginx config
@@ -53,7 +54,7 @@ docker run \
 	--name www \
 	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
 	-p 80:80 \
-	dockette/web:php-83
+	dockette/web:php-84
 ```
 
 ## Run cron tasks
@@ -68,7 +69,7 @@ docker run \
 	--name www \
 	-v my-crontab:/etc/cron.d/app \
 	-p 80:80 \
-	dockette/web:php-83
+	dockette/web:php-84
 ```
 
 Please note, this crontab should has a little bit different format.
@@ -78,11 +79,7 @@ There is also username, for example:
 57 19 * * *   www-data    my_command
 ```
 
-## Development
-
-See [how to contribute](https://contributte.org/contributing.html) to this package.
-
-This package is currently maintaining by these authors.
+## Credits
 
 <a href="https://github.com/f3l1x">
     <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
@@ -90,4 +87,4 @@ This package is currently maintaining by these authors.
 
 -----
 
-Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Also thank you for using this package.
+Consider to [support](https://bit.ly/f3l1xsponsor) **f3l1x**. Also thank you for using this package.
