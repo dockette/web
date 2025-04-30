@@ -16,6 +16,21 @@
 
 ![](https://github.com/dockette/web/blob/master/screenshot.png "It works")
 
+## Overview
+
+This project provides ready-to-use Docker images for web development and deployment. These images are built with a focus on PHP applications, offering a complete environment with Nginx, PHP-FPM, Supervisor, and Cron capabilities.
+
+### Key Features
+
+- **Multiple PHP Versions**: Support for PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, and 8.4
+- **Nginx Web Server**: Pre-configured with sensible defaults for PHP applications
+- **PHP-FPM**: Optimized for performance with common extensions installed
+- **Supervisor**: Process control system to manage services
+- **Cron Support**: Schedule and run periodic tasks
+- **Debian-based**: All images are built on Debian Bookworm for stability
+- **Customizable**: Easy configuration through volume mounts
+- **Production-Ready**: Optimized for both development and production environments
+
 ## Usage
 
 | Image                 | Distro   | PHP |
@@ -42,7 +57,7 @@ docker run \
 	dockette/web:php-84
 ```
 
-## Custom Nginx config
+### Custom Nginx config
 
 To customize Nginx config just bind new config to the path `/etc/nginx/sites.d/site.conf`, for example,
 in such way:
@@ -57,7 +72,7 @@ docker run \
 	dockette/web:php-84
 ```
 
-## Run cron tasks
+### Run cron tasks
 
 You could also run cron tasks, just simply bind your `crontab` to `/etc/cron.d/app`, for example,
 in such way:
@@ -79,7 +94,7 @@ There is also username, for example:
 57 19 * * *   www-data    my_command
 ```
 
-## Credits
+## Maintainers
 
 <a href="https://github.com/f3l1x">
     <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
