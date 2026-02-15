@@ -1,7 +1,7 @@
 <h1 align=center>Dockette / Web</h1>
 
 <p align=center>
-   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2/8.3/8.4 + FPM, supervisor, cron).
+   🐳 Ready-to-use docker images for websites (nginx, PHP 7.0/7.1/7.2/7.3/7.4/8.0/8.1/8.2/8.3/8.4/8.5 + FPM, supervisor, cron).
 </p>
 
 <p align=center>
@@ -22,7 +22,7 @@ This project provides ready-to-use Docker images for web development and deploym
 
 ### Key Features
 
-- **Multiple PHP Versions**: Support for PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, and 8.4
+- **Multiple PHP Versions**: Support for PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, and 8.5
 - **Nginx Web Server**: Pre-configured with sensible defaults for PHP applications
 - **PHP-FPM**: Optimized for performance with common extensions installed
 - **Supervisor**: Process control system to manage services
@@ -35,6 +35,7 @@ This project provides ready-to-use Docker images for web development and deploym
 
 | Image                 | Distro   | PHP |
 |-----------------------|----------|-----|
+| `dockette/web:php-85` | Bookworm | 8.5 |
 | `dockette/web:php-84` | Bookworm | 8.4 |
 | `dockette/web:php-83` | Bookworm | 8.3 |
 | `dockette/web:php-82` | Bookworm | 8.2 |
@@ -54,7 +55,7 @@ docker run \
 	--rm \
 	--name www \
 	-p 80:80 \
-	dockette/web:php-84
+	dockette/web:php-85
 ```
 
 ### Custom Nginx config
@@ -69,7 +70,7 @@ docker run \
 	--name www \
 	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
 	-p 80:80 \
-	dockette/web:php-84
+	dockette/web:php-85
 ```
 
 ### Run cron tasks
@@ -84,7 +85,7 @@ docker run \
 	--name www \
 	-v my-crontab:/etc/cron.d/app \
 	-p 80:80 \
-	dockette/web:php-84
+	dockette/web:php-85
 ```
 
 Please note, this crontab should has a little bit different format.
