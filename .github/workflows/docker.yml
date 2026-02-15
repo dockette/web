@@ -31,3 +31,4 @@ jobs:
           - { context: debian-php-82, tag: php-82 }
           - { context: debian-php-83, tag: php-83 }
           - { context: debian-php-84, tag: php-84 }
+          - { context: debian-php-85, tag: php-85 }
