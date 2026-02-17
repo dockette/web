@@ -95,12 +95,5 @@ There is also username, for example:
 57 19 * * *   www-data    my_command
 ```
 
-## Maintainers
-
-<a href="https://github.com/f3l1x">
-    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
-</a>
-
------
-
-Consider to [support](https://bit.ly/f3l1xsponsor) **f3l1x**. Also thank you for using this package.
+## Maintenance
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
