@@ -1,5 +1,7 @@
 DOCKER_IMAGE=dockette/web
 
+.PHONY: templates build test run docker-build-all docker-test-all
+
 templates:
 	cp -R .templates/ debian-php-70
 	cp -R .templates/ debian-php-71
@@ -32,6 +34,13 @@ docker-build-php-83: _docker-build-php-83
 docker-build-php-84: _docker-build-php-84
 docker-build-php-85: _docker-build-php-85
 
+build: docker-build-all
+
+test: docker-test-all
+
+run:
+	docker run --rm -it --name dockette-web -p 8000:80 ${DOCKER_IMAGE}:php-85
+
 docker-build-all:
 	$(MAKE) docker-build-php-70
 	$(MAKE) docker-build-php-71
@@ -61,7 +70,10 @@ docker-test-all:
 
 _docker-test-%: VERSION=$*
 _docker-test-%:
-	docker run --rm -d --name dockette-web-${VERSION} -p 8000:80 ${DOCKER_IMAGE}:${VERSION}
-	sleep 5
+	set -e; \
+	container="dockette-web-${VERSION}"; \
+	docker rm -f "$${container}" >/dev/null 2>&1 || true; \
+	trap 'docker rm -f "$${container}" >/dev/null 2>&1 || true' EXIT; \
+	docker run --rm -d --name "$${container}" -p 8000:80 ${DOCKER_IMAGE}:${VERSION}; \
+	sleep 5; \
 	curl -f -Li localhost:8000
-	docker stop dockette-web-${VERSION}
