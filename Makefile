@@ -1,4 +1,5 @@
 DOCKER_IMAGE=dockette/web
+DOCKER_TAG?=php-85
 
 .PHONY: templates build test run docker-build-all docker-test-all
 
@@ -39,7 +40,7 @@ build: docker-build-all
 test: docker-test-all
 
 run:
-	docker run --rm -it --name dockette-web -p 8000:80 ${DOCKER_IMAGE}:php-85
+	docker run --rm -it --name dockette-web -p 8000:80 ${DOCKER_IMAGE}:${DOCKER_TAG}
 
 docker-build-all:
 	$(MAKE) docker-build-php-70
