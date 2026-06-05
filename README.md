@@ -23,7 +23,7 @@ This project provides ready-to-use Docker images for web development and deploym
 
 ### Key Features
 
-- **Multiple PHP Versions**: Support for PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, and 8.5
+- **Multiple PHP Versions**: Support for PHP 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, 8.4, and 8.5; older EOL tags are retained for compatibility
 - **Nginx Web Server**: Pre-configured with sensible defaults for PHP applications
 - **PHP-FPM**: Optimized for performance with common extensions installed
 - **Supervisor**: Process control system to manage services
@@ -48,16 +48,26 @@ This project provides ready-to-use Docker images for web development and deploym
 | `dockette/web:php-71` | Bookworm | 7.1 |
 | `dockette/web:php-70` | Bookworm | 7.0 |
 
+PHP 7.0 through 8.1 are outside upstream active/security support and are kept here for compatibility with legacy applications. Prefer a maintained PHP tag for new projects.
+
 You can easily start your Docker container with following command.
 
 ```
 docker run \
 	-it \
 	--rm \
-	--name www \
-	-p 80:80 \
+	--name dockette-web \
+	-p 8000:80 \
 	dockette/web:php-85
 ```
+
+This matches the default `make run` behavior and serves the container on `http://localhost:8000/`.
+
+### Makefile commands
+
+- `make build` builds all PHP tags for `dockette/web`.
+- `make test` runs Docker smoke tests for all tags and checks `http://localhost:8000/`.
+- `make run` starts `${DOCKER_IMAGE}:${DOCKER_TAG}` with default tag `php-85`, container name `dockette-web`, and port mapping `8000:80`.
 
 ### Custom Nginx config
 
@@ -68,9 +78,9 @@ in such way:
 docker run \
 	-it \
 	--rm \
-	--name www \
+	--name dockette-web \
 	-v my-lovely-nginx.conf:/etc/nginx/sites.d/site.conf \
-	-p 80:80 \
+	-p 8000:80 \
 	dockette/web:php-85
 ```
 
@@ -83,9 +93,9 @@ in such way:
 docker run \
 	-it \
 	--rm \
-	--name www \
+	--name dockette-web \
 	-v my-crontab:/etc/cron.d/app \
-	-p 80:80 \
+	-p 8000:80 \
 	dockette/web:php-85
 ```
 
