@@ -52,9 +52,12 @@ RUN apt update && apt dist-upgrade -y && \
         php8.5-ssh2 \
         php8.5-tidy \
         php8.5-zip \
-        php8.5-xmlrpc \
         php8.5-xsl && \
-    if apt-cache show php8.5-memcached > /dev/null 2>&1; then apt install -y --no-install-recommends php8.5-memcached; fi && \
+    for extension in memcached xmlrpc; do \
+        if apt-cache show "php8.5-${extension}" > /dev/null 2>&1; then \
+            apt install -y --no-install-recommends "php8.5-${extension}"; \
+        fi; \
+    done && \
     # COMPOSER #################################################################
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2 && \
     # NGINX ####################################################################
