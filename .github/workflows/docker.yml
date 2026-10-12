@@ -35,3 +35,12 @@ jobs:
           - { context: debian-php-83, tag: php-83 }
           - { context: debian-php-84, tag: php-84 }
           - { context: debian-php-85, tag: php-85 }
+
+  docs:
+    name: "Docs"
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    uses: dockette/.github/.github/workflows/dockerhub-description.yml@master
+    secrets: inherit
+    with:
+      image: "dockette/web"
