@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
   push:
-    branches: ["master"]
 
   schedule:
     - cron: "0 8 * * 1"
@@ -13,14 +12,54 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: "Test"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - { context: debian-php-70, tag: php-70 }
+          - { context: debian-php-71, tag: php-71 }
+          - { context: debian-php-72, tag: php-72 }
+          - { context: debian-php-73, tag: php-73 }
+          - { context: debian-php-74, tag: php-74 }
+          - { context: debian-php-80, tag: php-80 }
+          - { context: debian-php-81, tag: php-81 }
+          - { context: debian-php-82, tag: php-82 }
+          - { context: debian-php-83, tag: php-83 }
+          - { context: debian-php-84, tag: php-84 }
+          - { context: debian-php-85, tag: php-85 }
+
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build image
+        uses: docker/build-push-action@v7
+        with:
+          context: ${{ matrix.context }}
+          tags: dockette/web:${{ matrix.tag }}
+          platforms: linux/amd64
+          load: true
+          cache-from: type=gha
+
+      - name: Test image
+        run: .scripts/test.sh ${{ matrix.tag }}
+
   build:
     name: "Build"
+    needs: test
     uses: dockette/.github/.github/workflows/docker.yml@master
     secrets: inherit
     with:
         image: "dockette/web"
         tag: "${{ matrix.tag }}"
         context: "${{ matrix.context }}"
+        push: ${{ github.ref == 'refs/heads/master' }}
     strategy:
       matrix:
         include:

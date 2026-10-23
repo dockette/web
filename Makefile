@@ -61,7 +61,4 @@ docker-test-all:
 
 _docker-test-%: VERSION=$*
 _docker-test-%:
-	docker run --rm -d --name dockette-web-${VERSION} -p 8000:80 ${DOCKER_IMAGE}:${VERSION}
-	sleep 5
-	curl -f -Li localhost:8000
-	docker stop dockette-web-${VERSION}
+	.scripts/test.sh ${VERSION} ${DOCKER_IMAGE}:${VERSION}
